@@ -3,13 +3,30 @@
   "version": "1.0.0",
   "description": "A minimal Electron application",
   "main": "main.js",
+  "build": {
+    "appId": "com.github.iffy.electronupdaterexample",
+    "afterSign": "./build/notarize.js",
+    "mac": {
+      "category": "your.app.category.type"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": false
+    },
+    "linux": {
+      "category": "your.app.category.type",
+      "target": "AppImage"
+    }
+  },
   "scripts": {
     "start": "electron .",
-    "release": "electron-builder",
+    "release": "electron-builder -p always",
     "pack": "electron-builder --dir",
     "dist": "electron-builder"
   },
-  "repository": "https://github.com/electron/electron-quick-start",
+  "repository": "https://github.com/iguzelofficial/dxgm-electroun.git",
   "keywords": [
     "Electron",
     "quick",
@@ -23,5 +40,10 @@
     "electron": "^17.0.0",
     "electron-builder": "^22.14.13",
     "electron-publish": "^23.0.0-alpha.1"
+  },
+  "dependencies": {
+    "electron-log": "^4.4.6",
+    "electron-notarize": "^1.1.1",
+    "electron-updater": "^4.6.5"
   }
 }
